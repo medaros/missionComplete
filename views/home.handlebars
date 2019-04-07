@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/home"><img src="icons/Magic Wand.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profil">Profil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" method="post">
+            <input type="hidden" name="form" value="search">
+            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Recherche notes" aria-label="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit"><img src="icons/Search.png" width="20px"></button>
+        </form>
+    </div>
+</nav>
+
+<main role="main" class="container py-5 col-8">
+    <div><a href="/add" class="btn btn-primary"><img src="icons/Glyph Add.png" width=25> Add new note</a></div>
+    <div class="container d-flex row flex-wrap-reverse justify-content-between m-auto py-5">
+        {{#each cards}}
+        <div class="card text-white bg-{{this.color}} my-2" style="width: 18rem;">
+            <div class="card-header d-flex justify-content-between"><span>{{this.user}}</span><span style="cursor:pointer">
+                {{#if this.cu}}
+                <span class="mr-2">Edit</span><span>X</span></span>
+                {{/if}}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text">{{this.text}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+</main><!-- /.container -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
+    crossorigin="anonymous"></script>
